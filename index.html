@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All in One Apps</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,Arial,sans-serif;min-height:100vh;background:linear-gradient(135deg,#eef4ff,#f8f5ff);color:#182033}
+  header{padding:42px 20px 20px;text-align:center}
+  h1{font-size:clamp(2.1rem,6vw,4rem);letter-spacing:-2px}
+  .subtitle{margin:10px auto 25px;color:#65708a;font-size:1rem}
+  .search{max-width:680px;margin:auto;display:flex;background:white;border:1px solid #e2e7f0;border-radius:18px;padding:7px;box-shadow:0 12px 35px #273b7a12}
+  .search input{flex:1;border:0;outline:0;padding:13px 15px;font-size:1rem;background:transparent}
+  .search button{border:0;border-radius:13px;padding:0 20px;background:#4f46e5;color:white;font-weight:700;cursor:pointer}
+  main{max-width:1100px;margin:20px auto;padding:0 20px 50px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:17px}
+  .app{background:rgba(255,255,255,.88);border:1px solid #e5e9f2;border-radius:22px;padding:25px 15px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 10px 25px #273b7a0d;transition:.2s}
+  .app:hover{transform:translateY(-5px);box-shadow:0 17px 35px #273b7a18}
+  .icon{width:58px;height:58px;margin:0 auto 13px;border-radius:17px;display:grid;place-items:center;font-size:29px;background:#f0f2ff}
+  .app strong{display:block;font-size:1rem}
+  .app small{display:block;margin-top:5px;color:#7b8498}
+  footer{text-align:center;color:#7b8498;padding:0 20px 30px;font-size:.85rem}
+  .hidden{display:none}
+  @media(max-width:500px){header{padding-top:28px}.grid{grid-template-columns:repeat(2,1fr);gap:12px}.app{padding:20px 10px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>All in One Apps <span style="font-size:.42em;font-weight:600;letter-spacing:0;color:#667085;">C Sumith</span></h1>
+  <p class="subtitle">Your simple gateway to the apps and websites you use every day.</p>
+  <form class="search" id="searchForm">
+    <input id="searchInput" type="search" placeholder="Search apps..." autocomplete="off">
+    <button type="submit">Search</button>
+  </form>
+</header>
+
+<main>
+  <section class="grid" id="appGrid">
+    <a class="app" href="https://www.google.com/" target="_blank" rel="noopener"><div class="icon">🔎</div><strong>Google</strong><small>Search</small></a>
+    <a class="app" href="https://www.youtube.com/" target="_blank" rel="noopener"><div class="icon">▶️</div><strong>YouTube</strong><small>Videos</small></a>
+    <a class="app" href="https://mail.google.com/" target="_blank" rel="noopener"><div class="icon">✉️</div><strong>Gmail</strong><small>Email</small></a>
+    <a class="app" href="https://maps.google.com/" target="_blank" rel="noopener"><div class="icon">📍</div><strong>Maps</strong><small>Directions</small></a>
+    <a class="app" href="https://www.wikipedia.org/" target="_blank" rel="noopener"><div class="icon">📚</div><strong>Wikipedia</strong><small>Knowledge</small></a>
+    <a class="app" href="https://chatgpt.com/" target="_blank" rel="noopener"><div class="icon">🤖</div><strong>ChatGPT</strong><small>AI assistant</small></a>
+    <a class="app" href="https://drive.google.com/" target="_blank" rel="noopener"><div class="icon">☁️</div><strong>Google Drive</strong><small>Files</small></a>
+    <a class="app" href="https://translate.google.com/" target="_blank" rel="noopener"><div class="icon">🌐</div><strong>Translate</strong><small>Languages</small></a>
+    <a class="app" href="https://news.google.com/" target="_blank" rel="noopener"><div class="icon">📰</div><strong>Google News</strong><small>News</small></a>
+    <a class="app" href="https://www.reddit.com/" target="_blank" rel="noopener"><div class="icon">💬</div><strong>Reddit</strong><small>Communities</small></a>
+    <a class="app" href="https://www.instagram.com/" target="_blank" rel="noopener"><div class="icon">📷</div><strong>Instagram</strong><small>Social</small></a>
+    <a class="app" href="https://www.facebook.com/" target="_blank" rel="noopener"><div class="icon">👥</div><strong>Facebook</strong><small>Social</small></a>
+  </section>
+</main>
+
+<footer>All in One Apps • Links open the official websites in a new tab.</footer>
+
+<script>
+const input=document.getElementById('searchInput');
+const cards=[...document.querySelectorAll('.app')];
+function filter(){
+  const q=input.value.toLowerCase().trim();
+  cards.forEach(c=>c.classList.toggle('hidden',!c.innerText.toLowerCase().includes(q)));
+}
+input.addEventListener('input',filter);
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();filter();});
+</script>
+</body>
+</html>
